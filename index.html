@@ -160,6 +160,23 @@ button{
   margin-top:10px;
 }
 
+/* Footer Slide */
+.footer{
+  margin-top:20px;
+  font-size:13px;
+  opacity:0.8;
+  color:var(--secondary);
+  overflow:hidden;
+  white-space:nowrap;
+  width:100%;
+}
+
+.footer span{
+  display:inline-block;
+  padding-left:100%;
+  animation:slideText 10s linear infinite;
+}
+
 @keyframes fadeIn{
   from{opacity:0;transform:translateY(30px);}
   to{opacity:1;transform:translateY(0);}
@@ -168,6 +185,11 @@ button{
 @keyframes slideUp{
   from{opacity:0;transform:translateY(40px);}
   to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes slideText{
+  0%{transform:translateX(0);}
+  100%{transform:translateX(-100%);}
 }
 
 @media(max-width:420px){
@@ -203,20 +225,24 @@ button{
     <a href="Final⚡ TTK.apk" download>
       <button class="download-btn">Download APK</button>
     </a>
-
   </div>
+
+  <!-- Footer Slide -->
+  <div class="footer"><span>Mod By - Ryuzon (HA)</span></div>
 
 </div>
 
 <script>
-const PASSWORD = "121998";
+// ENCRYPTED PASSWORD (Base64)
+const ENCRYPTED_PASSWORD = "MTIxOTk4"; // "121998" encoded in Base64
 
 function checkLogin(){
   const input = document.getElementById("password").value;
-  if(input === PASSWORD){
+  const encodedInput = btoa(input); // encode user input to Base64
+  if(encodedInput === ENCRYPTED_PASSWORD){
     document.getElementById("login").style.display="none";
     document.getElementById("apk").style.display="block";
-  }else{
+  } else {
     document.getElementById("error").innerText="Wrong Password!";
   }
 }
@@ -224,5 +250,3 @@ function checkLogin(){
 
 </body>
 </html>
-
-password encrpt and all code encrpt
